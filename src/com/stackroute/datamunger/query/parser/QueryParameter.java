@@ -10,8 +10,8 @@ import java.util.Map;
  * */
 public class QueryParameter {
 
-	public String getFile() {
-		// TODO Auto-generated method stub
+    public String getFileName() {
+        // TODO Auto-generated method stub
 		return null;
 	}
 
