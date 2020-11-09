@@ -10,6 +10,7 @@ import java.util.Map;
  * */
 public class QueryParameter {
 
+
     public String getFileName() {
         // TODO Auto-generated method stub
 		return null;
