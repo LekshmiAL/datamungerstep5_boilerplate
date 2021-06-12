@@ -9,13 +9,18 @@ public class QueryParser {
 	 * QueryParameter class
 	 */
 	public QueryParameter parseQuery(String queryString) {
-	
+		String queryType = "base";
+		QueryParameter queryParameter = new QueryParameter();
+		DataMunger dataMunger =  new DataMunger();
 		/*
 		 * extract the name of the file from the query. File name can be found after the
 		 * "from" clause.
 		 */
-		
-		
+		queryParameter.setFilename(dataMunger.getFileName(queryString));
+		/*
+		 * Base query
+		 */
+		queryParameter.setBaseQuery(dataMunger.getBaseQuery(queryString));
 		/*
 		 * extract the order by fields from the query string. Please note that we will
 		 * need to extract the field(s) after "order by" clause in the query, if at all
@@ -23,7 +28,7 @@ public class QueryParser {
 		 * data/ipl.csv order by city from the query mentioned above, we need to extract
 		 * "city". Please note that we can have more than one order by fields.
 		 */
-		
+		queryParameter.setOrderByFields(dataMunger.getOrderByFields(queryString));
 		
 		/*
 		 * extract the group by fields from the query string. Please note that we will
@@ -32,7 +37,7 @@ public class QueryParser {
 		 * data/ipl.csv group by city from the query mentioned above, we need to extract
 		 * "city". Please note that we can have more than one group by fields.
 		 */
-		
+		queryParameter.setGroupByFields(dataMunger.getGroupByFields(queryString));
 		
 		/*
 		 * extract the selected fields from the query string. Please note that we will
@@ -42,9 +47,7 @@ public class QueryParser {
 		 * note that we might have a field containing name "from_date" or "from_hrs".
 		 * Hence, consider this while parsing.
 		 */
-		
-		
-		
+		queryParameter.setFields(dataMunger.getFields(queryString));	
 		
 		/*
 		 * extract the conditions from the query string(if exists). for each condition,
@@ -65,7 +68,7 @@ public class QueryParser {
 		 * Please consider this while parsing the conditions.
 		 * 
 		 */
-		
+		queryParameter.setRestrictions(dataMunger.getRestrictions(queryString));
 		
 		/*
 		 * extract the logical operators(AND/OR) from the query, if at all it is
@@ -76,7 +79,7 @@ public class QueryParser {
 		 * the query mentioned above in the example should return a List of Strings
 		 * containing [or,and]
 		 */
-		
+		queryParameter.setLogicalOperators(dataMunger.getLogicalOperators(queryString));
 		
 		/*
 		 * extract the aggregate functions from the query. The presence of the aggregate
@@ -91,7 +94,25 @@ public class QueryParser {
 		 * 
 		 * 
 		 */
-		return null;
+		queryParameter.setAggregateFunctions(dataMunger.getAggregateFunctions(queryString));
+		//to set the query type
+		if(queryParameter.getRestrictions()!=null && !queryParameter.getRestrictions().isEmpty()) {
+			queryType = queryType+",restrictions";
+		}
+		if(queryParameter.getAggregateFunctions()!=null && !queryParameter.getAggregateFunctions().isEmpty()) {
+			queryType = queryType+",aggregateFunctions";
+		}
+		if(queryParameter.getLogicalOperators()!=null && !queryParameter.getLogicalOperators().isEmpty()){
+			queryType = queryType+",logicalOpertors";
+		}
+		if(queryParameter.getGroupByFields()!=null && !queryParameter.getGroupByFields().isEmpty()){
+			queryType = queryType+",groupBy";
+		}
+		if(queryParameter.getOrderByFields()!=null && !queryParameter.getOrderByFields().isEmpty()){
+			queryType = queryType+",orderBy";
+		}
+		queryParameter.setQUERY_TYPE(queryType);
+		return queryParameter;
 	}
 	
 	

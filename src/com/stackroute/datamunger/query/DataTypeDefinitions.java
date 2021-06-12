@@ -17,26 +17,36 @@ public class DataTypeDefinitions {
 
 	//method stub
 	public static Object getDataType(String input) {
-	
+		
+		String dataType;
 		// checking for Integer
-		
-		// checking for floating point numbers
-		
-		// checking for date format dd/mm/yyyy
-		
-		// checking for date format mm/dd/yyyy
-		
-		// checking for date format dd-mon-yy
-		
-		// checking for date format dd-mon-yyyy
-		
-		// checking for date format dd-month-yy
-		
-		// checking for date format dd-month-yyyy
-		
-		// checking for date format yyyy-mm-dd
-		
-		return null;
+		if(input.matches("[+-]?[0-9]+")) {
+			dataType = "java.lang.Integer";
+		}// checking for floating point numbers
+		else if(input.matches("[+-]?[0-9]+[.][0-9]+")) {
+			dataType = "java.lang.Double";
+		}// checking for string
+		else if(input.matches("[a-zA-Z0-9\s]+")) {
+			dataType = "java.lang.String";
+		}// checking for date format dd/mm/yyyy
+		else if(input.matches("([0-2][0-9]|(3)[0-1])[/]((0)[1-9]|(1)[1-2])[/]([0-9]{4})") ||
+				// checking for date format mm/dd/yyyy
+				input.matches("((0)[1-9]|(1)[1-2])[/]([0-2][0-9]|(3)[0-1])[/]([0-9]{4})") ||
+				// checking for date format dd-mon-yy
+				input.matches("([0-2][0-9]|(3)[0-1])[-]([a-z]{3})[-]([0-9]{2})") ||
+				// checking for date format dd-month-yy
+				input.matches("([0-2][0-9]|(3)[0-1])[-]([a-z]+)[-]([0-9]{2})") ||
+				// checking for date format dd-month-yyyy
+				input.matches("([0-2][0-9]|(3)[0-1])[-]([a-z]+)[-]([0-9]{4})") ||
+				// checking for date format yyyy-mm-dd
+				input.matches("([0-9]{4})[-]((0)[1-9]|(1)[1-2])[-]([0-2][0-9]|(3)[0-1])") ||
+				// checking for date format dd-mon-yyyy
+				input.matches("([0-2][0-9]|(3)[0-1])[-]([a-z]{3})[-]([0-9]{4})")) {
+			dataType ="java.util.Date";
+		} else {
+			dataType ="java.lang.Object";
+		}		
+		return dataType;
 	}
 	
 

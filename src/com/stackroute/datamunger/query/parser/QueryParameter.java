@@ -9,54 +9,149 @@ import java.util.Map;
  * fields, Query Type
  * */
 public class QueryParameter {
+	private String fileName;
+	private List<String> fields;
+	private List<Restriction> restrictions;
+	private String baseQuery;
+	private List<AggregateFunction> aggregateFunctions;
+	private List<String> logicalOperators;
+	private List<String> orderByFields;
+	private List<String> groupByFields;
+	private String QUERY_TYPE;
+	
 
-
-    public String getFileName() {
-        // TODO Auto-generated method stub
-		return null;
+	/**
+	 * @param fileName the filename to set
+	 */
+	public void setFilename(String fileName) {
+		this.fileName = fileName;
 	}
 
+	/**
+	 * @param fields the fields to set
+	 */
+	public void setFields(List<String> fields) {
+		this.fields = fields;
+	}
+
+	/**
+	 * @param restrictions the restrictions to set
+	 */
+	public void setRestrictions(List<Restriction> restrictions) {
+		this.restrictions = restrictions;
+	}
+
+	/**
+	 * @param baseQuery the baseQuery to set
+	 */
+	public void setBaseQuery(String baseQuery) {
+		this.baseQuery = baseQuery;
+	}
+
+	/**
+	 * @param aggregateFunctions the aggregateFunctions to set
+	 */
+	public void setAggregateFunctions(List<AggregateFunction> aggregateFunctions) {
+		this.aggregateFunctions = aggregateFunctions;
+	}
+
+	/**
+	 * @param logicalOperators the logicalOperators to set
+	 */
+	public void setLogicalOperators(List<String> logicalOperators) {
+		this.logicalOperators = logicalOperators;
+	}
+
+	/**
+	 * @param orderByFields the orderByFields to set
+	 */
+	public void setOrderByFields(List<String> orderByFields) {
+		this.orderByFields = orderByFields;
+	}
+
+	/**
+	 * @param groupByFields the groupByFields to set
+	 */
+	public void setGroupByFields(List<String> groupByFields) {
+		this.groupByFields = groupByFields;
+	}
+
+	/**
+	 * @param qUERY_TYPE the QUERY_TYPE to set
+	 */
+	public void setQUERY_TYPE(String QUERY_TYPE) {
+		this.QUERY_TYPE = QUERY_TYPE;
+	}
+	/**
+	 * 
+	 * @return filename
+	 */
+	public String getFileName() {
+		return fileName;
+	}
+	/**
+	 * 
+	 * @return
+	 */
 	public List<String> getFields() {
-		// TODO Auto-generated method stub
-		return null;
+		return fields;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Restriction> getRestrictions() {
-		// TODO Auto-generated method stub
-		return null;
+		return restrictions;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getBaseQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return baseQuery;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public List<AggregateFunction> getAggregateFunctions() {
-		// TODO Auto-generated method stub
-		return null;
+		return aggregateFunctions;
 	}
-
+	/**
+	 * 
+	 * @return logicalOperators
+	 */
 	public List<String> getLogicalOperators() {
-		// TODO Auto-generated method stub
-		return null;
+		return logicalOperators;
 	}
-
+	/**
+	 * 
+	 * @return groupByFields
+	 */
 	public List<String> getGroupByFields() {
-		// TODO Auto-generated method stub
-		return null;
+		return groupByFields;
 	}
-
+	/**
+	 * 
+	 * @return orderByFields
+	 */
 	public List<String> getOrderByFields() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderByFields;
 	}
-
+	/**
+	 * 
+	 * @return QUERY_TYPE
+	 */
 	public String getQUERY_TYPE() {
-		// TODO Auto-generated method stub
-		return null;
+		return QUERY_TYPE;
 	}
 
-		
-
+	@Override
+	public String toString() {
+		return "QueryParameter [filename=" + fileName + ", fields=" + fields + ", restrictions=" + restrictions
+				+ ", baseQuery=" + baseQuery + ", aggregateFunctions=" + aggregateFunctions + ", logicalOperators="
+				+ logicalOperators + ", orderByFields=" + orderByFields + ", groupByFields=" + groupByFields
+				+ ", QUERY_TYPE=" + QUERY_TYPE + "]";
+	}
 	
 }
