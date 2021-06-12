@@ -26,7 +26,7 @@ public class DataTypeDefinitions {
 		else if(input.matches("[+-]?[0-9]+[.][0-9]+")) {
 			dataType = "java.lang.Double";
 		}// checking for string
-		else if(input.matches("[a-zA-Z0-9\s]+")) {
+		else if(input.matches("[a-zA-Z0-9\\s]+")) {
 			dataType = "java.lang.String";
 		}// checking for date format dd/mm/yyyy
 		else if(input.matches("([0-2][0-9]|(3)[0-1])[/]((0)[1-9]|(1)[1-2])[/]([0-9]{4})") ||
